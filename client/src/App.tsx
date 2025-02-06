@@ -1,16 +1,21 @@
-import { Outlet } from "react-router-dom"
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Nav from "./components/Nav";
+import { Routes, Route, Outlet } from "react-router-dom";
+import Home from "./pages/Home";
+import UserProfile from "./pages/UserProfile";
 
-import Navbar from "./components/Navbar"
-
-function App() {
+export default function App() {
   return (
-    <>
-      <Navbar />
-        <main>
-          <Outlet />
-        </main>
-    </>
-  )
+    <div>
+      <Header />
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<UserProfile />} />
+      </Routes>
+      <Outlet />
+      <Footer />
+    </div>
+  );
 }
-
-export default App
