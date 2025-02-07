@@ -6,11 +6,21 @@ interface JwtPayload {
     username: string;
 }
 
+// Extend the Request interface to include the user property (Co-pilot suggestion)
+declare module 'express-serve-static-core' {
+  interface Request {
+    user?: JwtPayload;
+  }
+}
+
 //Middleware to authenticate the JWT token. Kinda boilerplate. First, get the authorzation header from the request and verify that the header is present.
 export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
     //First, get the authorzation header from the request
-    const authHeader  = req.header.authorization;
+    // const authHeader  = req.header.authorization;
+    console.log("Inside Middleware");
+    const authHeader = req.header('authorization');
     //Split the authorization header on the space and get the second value from the array.
+    console.log(authHeader)
     if (authHeader) {
         const token = authHeader.split(' ')[1];
     //store the secret key as a variable from the porcess environment    

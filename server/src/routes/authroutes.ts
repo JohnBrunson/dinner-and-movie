@@ -1,9 +1,10 @@
 import { Router, Request, Response} from 'express';
-import { User } from '..models/user.js';
+import { User } from '../models/index.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 export const login = async (req: Request, res: Response) => {
+    console.log("Inside Authroutes.")
     // extract the username and password from the body.
     const { username, password} = req.body;
     // find the user in the database by username
