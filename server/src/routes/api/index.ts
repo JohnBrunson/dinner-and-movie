@@ -1,10 +1,11 @@
 import { Router } from 'express';
-import mealRoutes from './mealroutes.js'
+import mealRoutes from './mealRoutes.js'
+import movieRoutes from './movieRoutes.js'
 
 const router = Router();
 
 router.use('/meal', mealRoutes);
-// router.use('/volunteers', volunteerRouter);
-// router.use('/works', workRouter);
+router.use('/movie', movieRoutes);
+
 
 export default router;
