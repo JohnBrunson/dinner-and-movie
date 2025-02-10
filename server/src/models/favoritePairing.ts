@@ -1,0 +1,85 @@
+// import { Model, DataTypes, Sequelize } from 'sequelize';
+
+// export class FavoritePairing extends Model {
+//   declare userId: number;
+//   declare idMeal: string;
+//   declare imdbId: string;
+// }
+
+// export const initFavoritePairingModel = (sequelize: Sequelize) => {
+//   FavoritePairing.init(
+//     {
+//       userId: {
+//         type: DataTypes.INTEGER,
+//         allowNull: false,
+//       },
+//       idMeal: {
+//         type: DataTypes.STRING,
+//         allowNull: false,
+//       },
+//       imdbId: {
+//         type: DataTypes.STRING,
+//         allowNull: false,
+//       },
+//     },
+//     {
+//       sequelize,
+//       tableName: 'FavoritePairings',
+//     }
+//   );
+//   return FavoritePairing;
+// };
+
+// This is likely too complex. Second Draft Above, but it doesn't seem to work properly.
+import { Model, DataTypes, Sequelize } from 'sequelize';
+import { User } from './user.js';
+import { Meal } from './meal.js';
+import { Movie } from './movie.js';
+
+export class FavoritePairing extends Model {
+  declare id: number;
+  declare userId: number;
+  declare mealId: number;
+  declare movieId: number;
+}
+
+export const initFavoritePairingModel = (sequelize: Sequelize) => {
+  FavoritePairing.init(
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: User,
+          key: 'id',
+        },
+      },
+      mealId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: Meal,
+          key: 'id',
+        },
+      },
+      movieId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: Movie,
+          key: 'id',
+        },
+      },
+    },
+    {
+      sequelize,
+      tableName: 'FavoritePairings',
+    }
+  );
+  return FavoritePairing;
+};
