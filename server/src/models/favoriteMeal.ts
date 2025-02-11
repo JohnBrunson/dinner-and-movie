@@ -28,12 +28,12 @@
 
 import { Model, DataTypes, Sequelize } from 'sequelize';
 import { User } from './user.js';
-import { Meal } from './meal.js';
+//import { Meal } from './meal.js';
 
 export class FavoriteMeal extends Model {
   declare id: number;
-  declare userId: string;
-  declare mealId: string;
+  declare userId: number;
+  declare mealId: number;
 }
 
 export const initFavoriteMealModel = (sequelize: Sequelize) => {
@@ -45,7 +45,7 @@ export const initFavoriteMealModel = (sequelize: Sequelize) => {
         primaryKey: true,
       },
       userId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: User,
@@ -53,12 +53,12 @@ export const initFavoriteMealModel = (sequelize: Sequelize) => {
         },
       },
       mealId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-          model: Meal,
-          key: 'id',
-        },
+        // references: {
+        //   model: Meal,
+        //   key: 'id',
+        // },
       },
     },
     {
