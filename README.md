@@ -4,20 +4,40 @@
 
 Dinner and a Movie is for the time pressed individual who wants an easy way to plan out a night's entertainment. Whether it's the single person or someone trying to come up with date night ideas, this app is for you!
 
+![Picture of Dinner and a Movie](/readme-images/dinner-and-a-movie.png)
 
 ## Installation
 
-The production version of the application can be found here. If you want to tinker with the code, simply clone the repository.
+The production version of the application can be found [here](https://dinner-and-movie.onrender.com). If you want to tinker with the code, simply clone the repository. ```npm start run:dev``` will get you started. 
 
 ## Usage
 
-To use the productions version application, you can use the link here. 
+To use the productions version application, you can use the link [here](https://dinner-and-movie.onrender.com). 
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+At present, the product's interaction is simply being able to refresh the page and this will allow a new random movie to be pulled from the API.
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+Login will return a token, but is not required to see random movies. Eventually, this will be used to save favorite meals and movies.
+
+### API Reference
+#### Meals
+|Endpoint   | HTTP Method  | Brief Description and notes |
+|-----------|-------|--------------------------|
+|/api/meal/random  |GET| Get a random meal|
+|/api/meal/save-favorite|POST| Save a meal object from random|
+|/api/favorite-meals|POST|Save a favorite meal object. (Not in UI, relies on meals saved via save-favorites API mentioned above.)
+
+#### Movies
+|Endpoint   | HTTP Method  | Brief Description and notes |
+|-----------|-------|--------------------------|
+|/api/movie/random  |GET| Get a random movie|
+|/api/movie/search |GET| Search for a movie. Will attempt to match movies using search API |
+
+#### Authorization Routes
+|Endpoint   | HTTP Method  | Brief Description and notes |
+|-----------|-------|--------------------------|
+|/auth/login  |POST| Login functionality. Will return JWT Token. Not presently used in this iteration, but future usage anticipated.|
+
+There are other routes in the code, but they are untested or do not work (yet). Only known working routes are listed above. They may be tested with Insomnia, Postman, and the like.
 
 ## Credits
 
@@ -26,31 +46,10 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 |James Raney |https://github.com/jamesgraney|
 |Carlos Garibay|https://github.com/Carlosgaribay691|
 
-Resource: Starter Data for Random Movie API:  https://www.reddit.com/r/movies/comments/164ougo/these_are_the_100_greatest_movies_of_all_time/
+Resource: Seed Data for Random Movie API:  https://www.reddit.com/r/movies/comments/164ougo/these_are_the_100_greatest_movies_of_all_time/
 
 ## License
-**Boilerplate Text**
-
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+[MIT](https://choosealicense.com/licenses/mit/)
 
 ---
 
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-## Features
-
-If your project has a lot of features, list them here.
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
