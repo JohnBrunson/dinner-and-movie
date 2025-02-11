@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     {
       path: '/',
       element: <App />,
-      errorElement: <Error />,
+      //errorElement: <Error />,
       children: [
         {
           index: true,
@@ -33,6 +33,8 @@ const router = createBrowserRouter([
     },
   ]);
   
-  ReactDOM.createRoot(document.getElementById('root')).render(
+  // ReactDOM.createRoot(document.getElementById('root')).render(
+  //   <RouterProvider router={router} />
+  ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <RouterProvider router={router} />
   );
