@@ -1,5 +1,5 @@
-import sequelize from '../config/connection.js';
 import { seedUsers } from './users-seeds.js';
+import sequelize from '../config/connection.js';
 
 const seedAll = async (): Promise<void> => {
   try {
@@ -8,11 +8,6 @@ const seedAll = async (): Promise<void> => {
     
     await seedUsers();
     console.log (`\n---- USERS SEEDED ----\n`);
-    // await seedVolunteers();
-    // console.log('\n----- VOLUNTEERS SEEDED -----\n');
-    
-    // await seedWork();
-    // console.log('\n----- WORK SEEDED -----\n');
     
     process.exit(0);
   } catch (error) {
