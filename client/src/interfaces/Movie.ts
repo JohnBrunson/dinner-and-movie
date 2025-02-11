@@ -1,3 +1,4 @@
+// This is not updated with the capitalization issues because of time.
 export default interface Movie {
     title: string;
     year: string;
